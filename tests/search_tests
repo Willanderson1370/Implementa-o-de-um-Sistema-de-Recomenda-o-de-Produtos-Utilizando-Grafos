@@ -1,0 +1,12 @@
+use megastore_search::product::Product;
+use megastore_search::search::SearchEngine;
+
+#[test]
+fn test_add_and_search_product() {
+    let mut engine = SearchEngine::new();
+    engine.add_product(Product::new(1, "Smartphone Samsung", "Eletrônicos", "Samsung"));
+
+    let results = engine.search("Samsung");
+    assert_eq!(results.len(), 1);
+    assert_eq!(results[0].name, "Smartphone Samsung");
+}
